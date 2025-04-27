@@ -1,11 +1,18 @@
 const text = "Create with growth. - 成長とともに、つくる。";
 const typingElem = document.getElementById("typing");
-const firstView = document.querySelector(".first-view"); 
+const firstView = document.querySelector(".first-view");
 let i = 0;
 
 function typingEffect() {
   if (i < text.length) {
     typingElem.innerHTML += text.charAt(i);
+
+    // キラキラエフェクト！！
+    typingElem.classList.add('sparkle');
+    setTimeout(() => {
+      typingElem.classList.remove('sparkle');
+    }, 300); // 0.3秒後にキラキラを消す
+
     i++;
     setTimeout(typingEffect, 80); // 速度調整
   } else {

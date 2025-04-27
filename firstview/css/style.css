@@ -15,7 +15,23 @@ body, html {
  transform: scale(1); /* ← 最初は普通サイズ */
 	transition: opacity 1s ease, transform 1s ease; /* ← これがポイント */
 }
+/* キラキラタイピング----------------------- */
+@keyframes sparkle {
+	0% {
+			text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+	}
+	50% {
+			text-shadow: 0 0 15px #ff0, 0 0 20px #ff0;
+	}
+	100% {
+			text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+	}
+}
 
+.sparkle {
+	animation: sparkle 0.3s ease forwards;
+}
+/* キラキラタイピング-----------------------終わり*/
 .video-mask {
  width: 100%;
  height: 100%;
