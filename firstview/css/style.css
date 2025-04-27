@@ -2,13 +2,13 @@ body, html {
  margin: 0;
  padding: 0;
  height: 100%;
- background: white;
  font-family: sans-serif;
 }
 
 .first-view {
  width: 100vw;
  height: 100vh;
+ background: white;
  position: relative;
  overflow: hidden;
  transition: opacity 1s ease;
