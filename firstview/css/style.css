@@ -11,7 +11,9 @@ body, html {
  background: white;
  position: relative;
  overflow: hidden;
- transition: opacity 1s ease;
+ opacity: 1;
+ transform: scale(1); /* ← 最初は普通サイズ */
+	transition: opacity 1s ease, transform 1s ease; /* ← これがポイント */
 }
 
 .video-mask {

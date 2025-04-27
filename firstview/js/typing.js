@@ -15,11 +15,11 @@ function typingEffect() {
 }
 
 function fadeOut(element) {
-  element.style.transition = "opacity 1s ease";
-  element.style.opacity = "0";
+  element.style.transform = "scale(1.1)"; // ← ちょっと拡大
+  element.style.opacity = "0";             // ← 透明にする
 
   element.addEventListener('transitionend', () => {
-    element.style.display = "none";
+    element.style.display = "none"; // ← 完全に消す
   }, { once: true });
 }
 
