@@ -7,12 +7,11 @@ function typingEffect() {
     typingElem.innerHTML += text.charAt(i);
     i++;
     setTimeout(typingEffect, 80); // 速度調整
-  }else {
-     // タイピングが終わったら消す
-     fadeOut(firstView);
+  } else {
+    // タイピングが終わったら消す
+    fadeOut(firstView);
   }
 }
-typingEffect();
 
 function fadeOut(element) {
   element.style.transition = "opacity 1s ease";
@@ -22,3 +21,5 @@ function fadeOut(element) {
     element.style.display = "none";
   }, { once: true });
 }
+
+typingEffect();
