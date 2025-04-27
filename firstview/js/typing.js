@@ -1,5 +1,6 @@
 const text = "Create with growth. - 成長とともに、つくる。";
 const typingElem = document.getElementById("typing");
+const firstView = document.querySelector(".first-view"); 
 let i = 0;
 
 function typingEffect() {
