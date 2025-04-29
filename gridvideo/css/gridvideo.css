@@ -1,0 +1,165 @@
+/* style.css */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #f8fdff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-grid-wrapper {
+  width: 90vw;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-grid-container {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
+
+.cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+}
+
+
+.cell video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: center center;
+  object-fit: cover;
+  width: 300%;
+  height: 300%;
+  transition: transform 0.3s ease;
+  transform: var(--base-transform);
+}
+
+/* ホバー時に上乗せ拡大（今見えてる位置をキープしたまま） */
+.cell:hover video {
+  transform: var(--base-transform) scale(1.1);
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* 飛来アニメーション */
+@keyframes flyInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-150%) scale(0.5) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flyInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(150%) scale(0.5) rotate(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flyInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-150%) scale(0.5) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes flyInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(150%) scale(0.5) rotate(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 各セルの方向別アニメーションとディレイ設定 */
+.position-tl {
+  animation-name: flyInLeft;
+  animation-delay: 0.1s;
+}
+
+.position-top {
+  animation-name: flyInTop;
+  animation-delay: 0.2s;
+}
+
+.position-tr {
+  animation-name: flyInRight;
+  animation-delay: 0.3s;
+}
+
+.position-left {
+  animation-name: flyInLeft;
+  animation-delay: 0.4s;
+}
+
+.position-center {
+  animation-name: flyInTop;
+  animation-delay: 0.5s;
+}
+
+.position-right {
+  animation-name: flyInRight;
+  animation-delay: 0.6s;
+}
+
+.position-bl {
+  animation-name: flyInLeft;
+  animation-delay: 0.7s;
+}
+
+.position-bottom {
+  animation-name: flyInBottom;
+  animation-delay: 0.8s;
+}
+
+.position-br {
+  animation-name: flyInRight;
+  animation-delay: 0.9s;
+}
+
+@media screen and (min-width:320px) {
+  .cell video {
+    top: 105px;
+  }
+}
