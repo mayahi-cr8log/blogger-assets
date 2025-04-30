@@ -40,10 +40,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  transform-origin: center center;
+  transform-origin: top;
   object-fit: cover;
-  width: 131%;
-  height: 131%;
+  width: 138%;
+  height: 138%;
   transition: transform 0.3s ease;
   transform: var(--base-transform);
 }
