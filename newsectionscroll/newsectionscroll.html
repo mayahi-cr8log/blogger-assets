@@ -2,306 +2,305 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>完全版・無限横スクロール</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>完全版・無限横スクロール</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
 
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
 
-        .tabs button {
-            padding: 10px 20px;
-            border: none;
-            background: #333;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: 16px;
-        }
+    .tabs button {
+      padding: 10px 20px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
 
-        .tabs button:hover {
-            background: #555;
-        }
+    .tabs button:hover {
+      background: #555;
+    }
 
-        .cntents_width {
-            width: 960px;
-            margin: auto;
-            position: relative;
-        }
+    .contents_width {
+      width: 960px;
+      margin: auto;
+      position: relative;
+    }
 
-        .scroll-container {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            white-space: nowrap;
-            width: 95%;
-            margin: auto;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            position: relative;
-            background: #fff;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
+    .scroll-container {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      white-space: nowrap;
+      width: 95%;
+      margin: auto;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      position: relative;
+      background: #fff;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
 
-        .scroll-container::-webkit-scrollbar {
-            display: none;
-        }
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
 
-        .scroll-content {
-            display: flex;
-            align-items: center;
-            padding: 20px 0;
-            flex-wrap: nowrap;
-        }
+    .scroll-content {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: nowrap;
+    }
 
-        .light {
-            background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-            /* 薄い色グラデーション */
-        }
+    .light {
+      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+    }
 
-        .dark {
-            background: linear-gradient(135deg, #26c6da, #00acc1);
-            /* 濃い色グラデーション */
-        }
+    .dark {
+      background: linear-gradient(135deg, #26c6da, #00acc1);
+    }
 
-        .card,
-        .dummy-card {
-            flex: 0 0 auto;
-            width: 300px;
-            height: 200px;
-            margin: 0 20px;
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .card,
+    .dummy-card {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 200px;
+      margin: 0 20px;
+      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        .card:hover,
-        .dummy-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
+    .card:hover,
+    .dummy-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        .arrow-left,
-        .arrow-right {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-            color: #333;
-            cursor: pointer;
-            opacity: 0.7;
-            transition: transform 0.3s ease;
-        }
+    .arrow-left,
+    .arrow-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: #333;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: transform 0.3s ease;
+    }
 
-        .arrow-left:hover,
-        .arrow-right:hover {
-            transform: translateY(-50%) scale(1.2);
-            opacity: 1;
-        }
+    .arrow-left:hover,
+    .arrow-right:hover {
+      transform: translateY(-50%) scale(1.2);
+      opacity: 1;
+    }
 
-        .arrow-left {
-            left: -40px;
-            animation: move-left 1.5s infinite alternate ease-in-out;
-        }
+    .arrow-left {
+      left: -40px;
+      animation: move-left 1.5s infinite alternate ease-in-out;
+    }
 
-        .arrow-right {
-            right: -40px;
-            animation: move-right 1.5s infinite alternate ease-in-out;
-        }
+    .arrow-right {
+      right: -40px;
+      animation: move-right 1.5s infinite alternate ease-in-out;
+    }
 
-        @keyframes move-left {
-            0% {
-                transform: translateX(-10px);
-            }
+    @keyframes move-left {
+      0% {
+        transform: translateX(-10px);
+      }
 
-            100% {
-                transform: translateX(10px);
-            }
-        }
+      100% {
+        transform: translateX(10px);
+      }
+    }
 
-        @keyframes move-right {
-            0% {
-                transform: translateX(10px);
-            }
+    @keyframes move-right {
+      0% {
+        transform: translateX(10px);
+      }
 
-            100% {
-                transform: translateX(-10px);
-            }
-        }
-    </style>
+      100% {
+        transform: translateX(-10px);
+      }
+    }
+  </style>
 </head>
+
+<!-- 省略: <head> 内は元のまま -->
 
 <body>
 
-    <div class="cntents_width">
-        <div class="tabs">
-            <button data-target="create">マイクリエイトブログ</button>
-            <button data-target="camera">カメラブログ</button>
-            <button data-target="web">ウェブ制作スキルブログ</button>
-        </div>
-
-        <div class="scroll-container">
-            <div class="scroll-content">
-                <div class="dummy-card light">マイクリエイトブログ</div>
-                <div class="dummy-card dark">カメラブログ</div>
-                <div class="dummy-card light">ウェブ制作スキルブログ</div>
-                <div class="card dark" id="create">マイクリエイトブログ</div>
-                <div class="card light" id="camera">カメラブログ</div>
-                <div class="card dark" id="web">ウェブ制作スキルブログ</div>
-            </div>
-        </div>
-
-        <div class="arrow-left" id="arrow-left">🔙</div>
-        <div class="arrow-right" id="arrow-right">🔜</div>
+  <div class="contents_width">
+    <div class="tabs">
+      <button data-target="tab1">マイクリエイトブログ</button>
+      <button data-target="tab2">カメラブログ</button>
+      <button data-target="tab3">ウェブ制作スキルブログ</button>
     </div>
 
-    <script>
-        const container = document.querySelector('.scroll-container');
-        const content = document.querySelector('.scroll-content');
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <div class="dummy-card light">マイクリエイトブログ</div>
+        <div class="dummy-card dark">カメラブログ</div>
+        <div class="dummy-card light">ウェブ制作スキルブログ</div>
+        <div class="card dark" data-id="tab1">マイクリエイトブログ</div>
+        <div class="card light" data-id="tab2">カメラブログ</div>
+        <div class="card dark" data-id="tab3">ウェブ制作スキルブログ</div>
+      </div>
+    </div>
 
-        // ===== クローンをいっぱい作って無限に見せる =====
-        function createClones() {
-            const originals = [...content.children];
-            const cloneCount = 4; // 4回分増やす（必要ならここ調整）
-            for (let i = 0; i < cloneCount; i++) {
-                originals.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    content.appendChild(clone);
-                });
-            }
-        }
+    <div class="arrow-left">🔙</div>
+    <div class="arrow-right">🔜</div>
+  </div>
 
-        createClones();
 
-        // ===== 初期位置を中央に =====
-        function centerInitialCard() {
-            const firstTarget = document.getElementById('create');
-            const containerRect = container.getBoundingClientRect();
-            const targetRect = firstTarget.getBoundingClientRect();
-            const offset = (targetRect.left - containerRect.left) - (container.clientWidth / 2) + (firstTarget.offsetWidth / 2);
-            container.scrollLeft += offset;
-        }
+  <div class="contents_width">
+    <div class="tabs">
+      <button data-target="tab1">マイクリエイトブログ</button>
+      <button data-target="tab2">カメラブログ</button>
+      <button data-target="tab3">ウェブ制作スキルブログ</button>
+    </div>
 
-        window.addEventListener('load', centerInitialCard);
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <div class="dummy-card light">マイクリエイトブログ</div>
+        <div class="dummy-card dark">カメラブログ</div>
+        <div class="dummy-card light">ウェブ制作スキルブログ</div>
+        <div class="card dark" data-id="tab1">マイクリエイトブログ</div>
+        <div class="card light" data-id="tab2">カメラブログ</div>
+        <div class="card dark" data-id="tab3">ウェブ制作スキルブログ</div>
+      </div>
+    </div>
 
-        // ===== タブクリックで対象を中央に =====
-        const buttons = document.querySelectorAll('.tabs button');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.dataset.target;
-                const targetElement = container.querySelector(`#${targetId}`);
-                if (targetElement) {
-                    const containerRect = container.getBoundingClientRect();
-                    const targetRect = targetElement.getBoundingClientRect();
-                    const offset = (targetRect.left - containerRect.left) - (container.clientWidth / 2) + (targetElement.offsetWidth / 2);
-                    container.scrollBy({ left: offset, behavior: 'smooth' });
-                }
-            });
+    <div class="arrow-left">🔙</div>
+    <div class="arrow-right">🔜</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.contents_width').forEach(section => {
+      const container = section.querySelector('.scroll-container');
+      const content = section.querySelector('.scroll-content');
+      const leftArrow = section.querySelector('.arrow-left');
+      const rightArrow = section.querySelector('.arrow-right');
+      const buttons = section.querySelectorAll('.tabs button');
+
+      const originals = [...content.children];
+      for (let i = 0; i < 4; i++) {
+        originals.forEach(card => {
+          content.appendChild(card.cloneNode(true));
+        });
+      }
+
+      function centerInitialCard() {
+        const firstTarget = content.querySelector('[data-id="tab1"]');
+        if (!firstTarget) return;
+        const offset = firstTarget.offsetLeft + firstTarget.offsetWidth / 2 - container.clientWidth / 2;
+        container.scrollLeft = offset;
+      }
+      centerInitialCard();
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.dataset.target;
+          const targetElement = content.querySelector(`[data-id="${targetId}"]`);
+          if (targetElement) {
+            const offset = targetElement.offsetLeft + targetElement.offsetWidth / 2 - container.clientWidth / 2;
+            container.scrollTo({ left: offset, behavior: 'smooth' });
+          }
+        });
+      });
+
+      function centerCard(card) {
+        const targetCenter = card.offsetLeft + card.offsetWidth / 2;
+        const containerCenter = container.scrollLeft + container.clientWidth / 2;
+        const offset = targetCenter - containerCenter;
+        container.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+
+      function findCenterCard() {
+        const cards = content.querySelectorAll('.card, .dummy-card');
+        const containerCenter = container.scrollLeft + container.clientWidth / 2;
+        let closestCard = null;
+        let minDistance = Infinity;
+
+        cards.forEach(card => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          const distance = Math.abs(containerCenter - cardCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestCard = card;
+          }
         });
 
-        // ===== 矢印クリックで前後カードに移動 =====
-        function centerCard(card) {
-            const targetCenter = card.offsetLeft + card.offsetWidth / 2;
-            const containerCenter = container.scrollLeft + container.clientWidth / 2;
-            const offset = targetCenter - containerCenter;
-            container.scrollBy({ left: offset, behavior: 'smooth' });
+        return closestCard;
+      }
+
+      leftArrow.addEventListener('click', () => {
+        const currentCard = findCenterCard();
+        let prevCard = currentCard.previousElementSibling;
+        if (!prevCard) prevCard = content.lastElementChild;
+        centerCard(prevCard);
+      });
+
+      rightArrow.addEventListener('click', () => {
+        const currentCard = findCenterCard();
+        let nextCard = currentCard.nextElementSibling;
+        if (!nextCard) nextCard = content.firstElementChild;
+        centerCard(nextCard);
+      });
+
+      container.addEventListener('scroll', () => {
+        const scrollWidth = content.scrollWidth;
+        const containerWidth = container.clientWidth;
+
+        if (container.scrollLeft <= 0) {
+          container.scrollLeft = scrollWidth / 2;
+        } else if (container.scrollLeft + containerWidth >= scrollWidth) {
+          container.scrollLeft = scrollWidth / 2 - containerWidth;
         }
+      });
 
-        function findCenterCard() {
-            const cards = container.querySelectorAll('.card, .dummy-card');
-            const containerCenter = container.scrollLeft + container.clientWidth / 2;
-            let closestCard = null;
-            let minDistance = Infinity;
+      setTimeout(() => {
+        const scrollBy = 1365;
+        const duration = 2000;
+        const start = container.scrollLeft;
+        const startTime = performance.now();
 
-            cards.forEach(card => {
-                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                const distance = Math.abs(containerCenter - cardCenter);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestCard = card;
-                }
-            });
-
-            return closestCard;
-        }
-
-        document.getElementById('arrow-left').addEventListener('click', () => {
-            const currentCard = findCenterCard();
-            let prevCard = currentCard.previousElementSibling;
-            if (!prevCard) prevCard = content.lastElementChild;
-            centerCard(prevCard);
-        });
-
-        document.getElementById('arrow-right').addEventListener('click', () => {
-            const currentCard = findCenterCard();
-            let nextCard = currentCard.nextElementSibling;
-            if (!nextCard) nextCard = content.firstElementChild;
-            centerCard(nextCard);
-        });
-
-        // ===== 左端・右端の巻き戻し =====
-        container.addEventListener('scroll', () => {
-            const scrollWidth = content.scrollWidth;
-            const containerWidth = container.clientWidth;
-
-            if (container.scrollLeft <= 0) {
-                // 左端まで行ったら末尾の方へジャンプ
-                container.scrollLeft = scrollWidth / 2;
-            } else if (container.scrollLeft + containerWidth >= scrollWidth) {
-                // 右端まで行ったら先頭にジャンプ
-                container.scrollLeft = scrollWidth / 2 - containerWidth;
-            }
-        });
-        
-        function slowScrollBy(distance, duration) {
-            const start = container.scrollLeft;
-            const startTime = performance.now();
-
-            function scrollStep(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                container.scrollLeft = start + distance * progress;
-
-                if (progress < 1) {
-                    requestAnimationFrame(scrollStep);
-                }
-            }
-
+        function scrollStep(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          container.scrollLeft = start + scrollBy * progress;
+          if (progress < 1) {
             requestAnimationFrame(scrollStep);
+          }
         }
 
-        // 使い方
-        window.addEventListener('load', () => {
-            centerInitialCard(); // 中央寄せ
-            setTimeout(() => {
-                slowScrollBy(1365, 2000); // ← 2秒かけて1365pxスクロール
-            }, 100); // 100ミリ秒待ってからスタート
-        });
-
-
-
-    </script>
-
+        requestAnimationFrame(scrollStep);
+      }, 100);
+    });
+  </script>
 </body>
 
 </html>

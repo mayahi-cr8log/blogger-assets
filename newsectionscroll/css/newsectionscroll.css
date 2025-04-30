@@ -1,12 +1,11 @@
-
 .tabs {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     gap: 10px;
-}
+  }
 
-.tabs button {
+  .tabs button {
     padding: 10px 20px;
     border: none;
     background: #333;
@@ -15,19 +14,19 @@
     cursor: pointer;
     transition: background 0.3s;
     font-size: 16px;
-}
+  }
 
-.tabs button:hover {
+  .tabs button:hover {
     background: #555;
-}
+  }
 
-.contents_width {
+  .contents_width {
     width: 960px;
     margin: auto;
     position: relative;
-}
+  }
 
-.scroll-container {
+  .scroll-container {
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
@@ -39,31 +38,29 @@
     background: #fff;
     scrollbar-width: none;
     -ms-overflow-style: none;
-}
+  }
 
-.scroll-container::-webkit-scrollbar {
+  .scroll-container::-webkit-scrollbar {
     display: none;
-}
+  }
 
-.scroll-content {
+  .scroll-content {
     display: flex;
     align-items: center;
     padding: 20px 0;
     flex-wrap: nowrap;
-}
+  }
 
-.light {
+  .light {
     background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
-    /* 薄い色グラデーション */
-}
+  }
 
-.dark {
+  .dark {
     background: linear-gradient(135deg, #26c6da, #00acc1);
-    /* 濃い色グラデーション */
-}
+  }
 
-.card,
-.dummy-card {
+  .card,
+  .dummy-card {
     flex: 0 0 auto;
     width: 300px;
     height: 200px;
@@ -79,16 +76,16 @@
     color: #333;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-}
+  }
 
-.card:hover,
-.dummy-card:hover {
+  .card:hover,
+  .dummy-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+  }
 
-.arrow-left,
-.arrow-right {
+  .arrow-left,
+  .arrow-right {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -97,40 +94,40 @@
     cursor: pointer;
     opacity: 0.7;
     transition: transform 0.3s ease;
-}
+  }
 
-.arrow-left:hover,
-.arrow-right:hover {
+  .arrow-left:hover,
+  .arrow-right:hover {
     transform: translateY(-50%) scale(1.2);
     opacity: 1;
-}
+  }
 
-.arrow-left {
+  .arrow-left {
     left: -40px;
     animation: move-left 1.5s infinite alternate ease-in-out;
-}
+  }
 
-.arrow-right {
+  .arrow-right {
     right: -40px;
     animation: move-right 1.5s infinite alternate ease-in-out;
-}
+  }
 
-@keyframes move-left {
+  @keyframes move-left {
     0% {
-        transform: translateX(-10px);
+      transform: translateX(-10px);
     }
 
     100% {
-        transform: translateX(10px);
+      transform: translateX(10px);
     }
-}
+  }
 
-@keyframes move-right {
+  @keyframes move-right {
     0% {
-        transform: translateX(10px);
+      transform: translateX(10px);
     }
 
     100% {
-        transform: translateX(-10px);
+      transform: translateX(-10px);
     }
-}
+  }
