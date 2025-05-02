@@ -181,6 +181,7 @@ ul {
     background: linear-gradient(to right, rgba(232, 59, 7, 0.8), rgba(208, 213, 7, 0.8));;
     box-shadow: none;
     color: #fff;
+    border-bottom: solid 2px;
 }
 
 .header_coulmn {
@@ -430,4 +431,5 @@ footer {
     height: 70px;
     line-height: 70px;
     color: #fff;
+    border-bottom: solid 2px;
 }
