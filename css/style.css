@@ -425,7 +425,7 @@ a.comment-link {
 }
 
 footer {
-    background-color: linear-gradient(to right, rgba(232, 59, 7, 0.8), rgba(208, 213, 7, 0.8));;
+    background: linear-gradient(to right, rgba(232, 59, 7, 0.8), rgba(208, 213, 7, 0.8));;
     text-align: center;
     height: 70px;
     line-height: 70px;
