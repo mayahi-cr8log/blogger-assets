@@ -37,3 +37,44 @@ window.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(applyTransforms);
 });
 window.addEventListener("resize", applyTransforms);
+
+// 無限スクロールに入れた時の指定--------------------------------------
+function isVideoVisibleInScrollContainer(video, container) {
+  const videoRect = video.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const centerX = videoRect.left + videoRect.width / 2;
+  const centerY = videoRect.top + videoRect.height / 2;
+
+  return (
+    centerX >= containerRect.left &&
+    centerX <= containerRect.right &&
+    centerY >= containerRect.top &&
+    centerY <= containerRect.bottom
+  );
+}
+
+function checkAllScrollContainers() {
+  document.querySelectorAll('.scroll-container').forEach(container => {
+    container.querySelectorAll('.cell video').forEach(video => {
+      if (video.hasAttribute('muted') && video.hasAttribute('loop')) {
+        if (isVideoVisibleInScrollContainer(video, container)) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      }
+    });
+  });
+}
+
+// 各種イベントでチェック
+window.addEventListener('scroll', checkAllScrollContainers);
+window.addEventListener('resize', checkAllScrollContainers);
+document.querySelectorAll('.scroll-container').forEach(container => {
+  container.addEventListener('scroll', checkAllScrollContainers);
+});
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(checkAllScrollContainers, 500);
+});
+
