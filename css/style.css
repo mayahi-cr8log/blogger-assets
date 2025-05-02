@@ -178,7 +178,7 @@ ul {
 
 /* メインビジュアルの　スライダー------- 終わり*/
 .header_color {
-    background-color: linear-gradient(to right, rgba(232, 59, 7, 0.8), rgba(208, 213, 7, 0.8));;
+    background: linear-gradient(to right, rgba(232, 59, 7, 0.8), rgba(208, 213, 7, 0.8));;
     box-shadow: none;
     color: #fff;
 }
