@@ -178,7 +178,7 @@ ul {
 
 /* メインビジュアルの　スライダー------- 終わり*/
 .header_color {
-    background-color: rgb(0, 0, 0, .5);
+    background-color: #3af3dd;
     box-shadow: none;
     color: #fff;
 }
@@ -425,7 +425,7 @@ a.comment-link {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: #3af3dd;
     text-align: center;
     height: 70px;
     line-height: 70px;
