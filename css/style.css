@@ -182,6 +182,7 @@ ul {
     color: #333;
     /* 白背景に馴染む優しいグレー */
     position: fixed;
+    border-bottom: 1px solid rgba(173, 216, 230, 0.6);
     top: 0;
     width: 100%;
     padding: 16px 24px;
