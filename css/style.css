@@ -178,16 +178,19 @@ ul {
 
 /* メインビジュアルの　スライダー------- 終わり*/
 .header_color {
-    background: linear-gradient(to bottom, rgba(240,248,255,0.95), rgba(173,216,230,0.4));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  color: #0a1e40; /* 深いネイビーで読みやすく */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 16px 24px;
-  z-index: 1000;
+    header {
+        background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0));
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        color: #333; /* 白背景に馴染む優しいグレー */
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 16px 24px;
+        z-index: 2;
+      }
+      
 }
 
 .header_coulmn {
