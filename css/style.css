@@ -36,7 +36,7 @@ ul {
 /* メインビジュアルの　スライダー------- */
 #blog-eyecatch-inner {
     position: relative;
-    margin: 32px auto;
+    margin: 201px auto 100px auto;
 }
 
 .swiper {
