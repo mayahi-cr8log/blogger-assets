@@ -14,6 +14,7 @@ body, html {
  opacity: 1;
  transform: scale(1); /* ← 最初は普通サイズ */
 	transition: opacity 1s ease, transform 1s ease; /* ← これがポイント */
+	z-index: 3;
 }
 /* キラキラタイピング----------------------- */
 @keyframes sparkle {
