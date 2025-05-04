@@ -30,7 +30,9 @@ ul {
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: cover;
-
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
 }
 
 /* 背景のYouTube動画部分---------終わり */
