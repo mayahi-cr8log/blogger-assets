@@ -17,6 +17,7 @@ ul {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+    will-change: transform;
 }
 
 #background-video video {
