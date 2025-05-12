@@ -8,8 +8,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0 auto;
-      width: 100%;
+      margin: 0;
+      padding: 20px;
     }
 
     .tabs {
@@ -36,15 +36,13 @@
 
     .contents_width {
       position: relative;
-      min-width: 960px;
     }
 
     .scroll-container {
       overflow-x: auto;
       scroll-behavior: smooth;
       white-space: nowrap;
-      width: 60%;
-      min-width: 560px;
+      width: 58%;
       margin: auto;
       border-radius: 10px;
       position: relative;
@@ -74,8 +72,8 @@
     .card,
     .dummy-card {
       flex: 0 0 auto;
-      width: 560px;
-      height: 560px;
+      width: 300px;
+      height: 200px;
       margin: 0 20px;
       background: linear-gradient(135deg, #74ebd5, #acb6e5);
       border-radius: 15px;
@@ -101,7 +99,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 73px;
+      font-size: 30px;
       color: #333;
       cursor: pointer;
       opacity: 0.7;
@@ -115,12 +113,12 @@
     }
 
     .arrow-left {
-      left: 13%;
+      left: 19%;
       animation: move-left 1.5s infinite alternate ease-in-out;
     }
 
     .arrow-right {
-      right: 13%;
+      right: 19%;
       animation: move-right 1.5s infinite alternate ease-in-out;
     }
 
