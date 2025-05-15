@@ -65,7 +65,7 @@
 			background: linear-gradient(135deg, #26c6da, #00acc1);
 		}
 
-		.card{
+		.card {
 			flex: 0 0 auto;
 			width: 870px;
 			height: 870px;
@@ -94,6 +94,7 @@
 			background: none;
 			border: none;
 			box-shadow: none;
+			pointer-events: none;
 		}
 
 		.card:hover {
@@ -326,7 +327,7 @@
 
 				<div class="dummy-card">
 					<div class="video-grid-wrapper">
-						
+
 					</div>
 				</div>
 
@@ -512,7 +513,7 @@
 				</div>
 				<div class="dummy-card">
 					<div class="video-grid-wrapper">
-						
+
 					</div>
 				</div>
 
@@ -562,7 +563,7 @@
 			}
 
 			function findCenterCard() {
-				const cards = content.querySelectorAll('.card, .dummy-card');
+				const cards = content.querySelectorAll('.card');
 				const containerCenter = container.scrollLeft + container.clientWidth / 2;
 				let closestCard = null;
 				let minDistance = Infinity;
@@ -578,16 +579,28 @@
 
 				return closestCard;
 			}
+			// dummy-cardをスキップして前後カードを取得
+			function getValidNextCard(currentCard) {
+				const cards = Array.from(content.querySelectorAll('.card'));
+				const index = cards.indexOf(currentCard);
+				return cards[(index + 1) % cards.length]; // 次へ（循環）
+			}
+
+			function getValidPrevCard(currentCard) {
+				const cards = Array.from(content.querySelectorAll('.card'));
+				const index = cards.indexOf(currentCard);
+				return cards[(index - 1 + cards.length) % cards.length]; // 前へ（循環）
+			}
 
 			leftArrow.addEventListener('click', () => {
 				const currentCard = findCenterCard();
-				let prevCard = currentCard.previousElementSibling || content.lastElementChild;
+				const prevCard = getValidPrevCard(currentCard);
 				centerCard(prevCard);
 			});
 
 			rightArrow.addEventListener('click', () => {
 				const currentCard = findCenterCard();
-				let nextCard = currentCard.nextElementSibling || content.firstElementChild;
+				const nextCard = getValidNextCard(currentCard);
 				centerCard(nextCard);
 			});
 
