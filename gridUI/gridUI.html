@@ -53,8 +53,8 @@
 		.scroll-content {
 			display: flex;
 			align-items: center;
-			padding: 20px 0;
 			flex-wrap: nowrap;
+			box-sizing: border-box;
 		}
 
 		.light {
@@ -65,8 +65,7 @@
 			background: linear-gradient(135deg, #26c6da, #00acc1);
 		}
 
-		.card,
-		.dummy-card {
+		.card{
 			flex: 0 0 auto;
 			width: 870px;
 			height: 870px;
@@ -84,8 +83,20 @@
 			transition: transform 0.3s, box-shadow 0.3s;
 		}
 
-		.card:hover,
-		.dummy-card:hover {
+		.dummy-card {
+			flex: 0 0 auto;
+			width: 870px;
+			/* .cardと同じ幅（中央寄せのために必須） */
+			height: 0;
+			/* 見た目は消す */
+			margin: 0 20px;
+			/* .cardと同じ左右マージン */
+			background: none;
+			border: none;
+			box-shadow: none;
+		}
+
+		.card:hover {
 			transform: scale(1.05);
 			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 		}
@@ -312,184 +323,10 @@
 
 		<div class="scroll-container">
 			<div class="scroll-content">
-				<div class="dummy-card light">
+
+				<div class="dummy-card">
 					<div class="video-grid-wrapper">
-						<div class="video-grid-container">
-							<div class="cell position-tl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-top">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-tr">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-left">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-center">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-right">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bottom">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-br">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Hikari.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="dummy-card dark">
-					<div class="video-grid-wrapper">
-						<div class="video-grid-container">
-							<div class="cell position-tl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-top">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-tr">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-left">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-center">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-right">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bottom">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-br">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiraline.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="dummy-card light">
-					<div class="video-grid-wrapper">
-						<div class="video-grid-container">
-							<div class="cell position-tl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-top">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-tr">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-left">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-center">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-right">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bl">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-bottom">
-								<video class="center_zoom" autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-							<div class="cell position-br">
-								<video autoplay muted loop playsinline id="bg-video">
-									<source src="https://mgusa-web.github.io/blogger-assets/video/ui/Kiranshokubutu.mp4"
-										type="video/mp4">
-								</video>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 
@@ -673,6 +510,12 @@
 						</div>
 					</div>
 				</div>
+				<div class="dummy-card">
+					<div class="video-grid-wrapper">
+						
+					</div>
+				</div>
+
 			</div>
 		</div>
 
@@ -688,13 +531,6 @@
 			const rightArrow = section.querySelector('.arrow-right');
 			const buttons = section.querySelectorAll('.tabs button');
 
-			// 💡 カード複製回数：1回だけ
-			const originals = [...content.children];
-			for (let i = 0; i < 1; i++) {
-				originals.forEach(card => {
-					content.appendChild(card.cloneNode(true));
-				});
-			}
 
 			// 初期表示位置を中央に
 			function centerInitialCard() {
@@ -755,23 +591,6 @@
 				centerCard(nextCard);
 			});
 
-			// 🔄 スクロール処理の間引き
-			let ticking = false;
-			container.addEventListener('scroll', () => {
-				if (!ticking) {
-					window.requestAnimationFrame(() => {
-						const scrollWidth = content.scrollWidth;
-						const containerWidth = container.clientWidth;
-						if (container.scrollLeft <= 0) {
-							container.scrollLeft = scrollWidth / 2;
-						} else if (container.scrollLeft + containerWidth >= scrollWidth) {
-							container.scrollLeft = scrollWidth / 2 - containerWidth;
-						}
-						ticking = false;
-					});
-					ticking = true;
-				}
-			});
 
 			// ⏳ 自動スクロール（必要なら有効化）
 			setTimeout(() => {
