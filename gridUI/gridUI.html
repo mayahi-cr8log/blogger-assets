@@ -88,7 +88,7 @@
 			width: 870px;
 			/* yohaku と同じ幅 */
 			height: 870px;
-			margin: 0 20px;
+			margin: 0 2%;
 			background: none;
 			border: none;
 			box-shadow: none;
@@ -325,7 +325,7 @@
 		<div class="scroll-container">
 			<div class="scroll-content">
 
-				<div class="dummy-card light">
+				<div class="dummy-card light" id="dummy-card">
 					<div class="video-grid-wrapper">
 
 					</div>
@@ -526,15 +526,19 @@
 			const rightArrow = section.querySelector('.arrow-right');
 			const buttons = section.querySelectorAll('.tabs button');
 
-			// 💡 カード複製回数：1回だけ
+			// 💡 ダミーとタブ1だけ複製する
 			const originals = [...content.children];
-			for (let i = 0; i < 1; i++) {
-				originals.forEach(card => {
+			originals.forEach(card => {
+				if (
+					card.classList.contains('dummy-card') ||
+					card.dataset.id === "tab1"
+				) {
 					content.appendChild(card.cloneNode(true));
-				});
-			}
+				}
+			});
 
-			// 初期表示位置を中央に
+
+			// 初期表示位置をtab1に
 			function centerInitialCard() {
 				const firstTarget = content.querySelector('[data-id="tab1"]');
 				if (!firstTarget) return;
@@ -599,19 +603,23 @@
 
 
 			// 🔄 スクロール処理の間引き（端に行ったら中央カードに戻す）
+			// 🔄 スクロール処理の間引き
 			let ticking = false;
 			container.addEventListener('scroll', () => {
 				if (!ticking) {
 					window.requestAnimationFrame(() => {
 						const scrollWidth = content.scrollWidth;
 						const containerWidth = container.clientWidth;
+						const centerCard = findCenterCard();
 
-						if (container.scrollLeft <= 0 || container.scrollLeft + containerWidth >= scrollWidth) {
-							const tab1Card = content.querySelector('[data-id="tab1"]');
-							if (tab1Card) {
-								const targetCenter = tab1Card.offsetLeft + tab1Card.offsetWidth / 2;
-								const newScrollLeft = targetCenter - container.clientWidth / 2;
-								container.scrollLeft = newScrollLeft;
+						// クローンのタブ1に入ったら、本物タブ1に瞬時に戻る
+						if (centerCard && centerCard.dataset.id === "tab1" && container.scrollLeft > scrollWidth / 2) {
+							const realTab1 = [...content.children].find(el =>
+								el.dataset?.id === "tab1" && el.offsetLeft < scrollWidth / 2
+							);
+							if (realTab1) {
+								const offset = realTab1.offsetLeft + realTab1.offsetWidth / 2 - container.clientWidth / 2;
+								container.scrollLeft = offset; // ⏱ 即時ジャンプ
 							}
 						}
 
@@ -620,6 +628,7 @@
 					ticking = true;
 				}
 			});
+
 
 
 
