@@ -633,23 +633,23 @@
 
 
 			// ⏳ 自動スクロール（必要なら有効化）
-			setTimeout(() => {
-				const scrollBy = 1365;
-				const duration = 2000;
-				const start = container.scrollLeft;
-				const startTime = performance.now();
+			// setTimeout(() => {
+			// 	const scrollBy = 1365;
+			// 	const duration = 2000;
+			// 	const start = container.scrollLeft;
+			// 	const startTime = performance.now();
 
-				function scrollStep(currentTime) {
-					const elapsed = currentTime - startTime;
-					const progress = Math.min(elapsed / duration, 1);
-					container.scrollLeft = start + scrollBy * progress;
-					if (progress < 1) {
-						requestAnimationFrame(scrollStep);
-					}
-				}
+			// 	function scrollStep(currentTime) {
+			// 		const elapsed = currentTime - startTime;
+			// 		const progress = Math.min(elapsed / duration, 1);
+			// 		container.scrollLeft = start + scrollBy * progress;
+			// 		if (progress < 1) {
+			// 			requestAnimationFrame(scrollStep);
+			// 		}
+			// 	}
 
-				requestAnimationFrame(scrollStep);
-			}, 100);
+			// 	requestAnimationFrame(scrollStep);
+			// }, 100);
 		});
 
 
