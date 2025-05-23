@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,10 +29,13 @@
         /* 動画スタイル */
         .swiper-slide video {
             width: 100%;
-            height: auto; /* 必要に応じて変更 */
+            height: auto;
+            /* 必要に応じて変更 */
             aspect-ratio: 16/9;
-            object-fit: cover; /* 動画が枠にぴったり収まるように */
-            object-position: center center; /* 動画の中心を表示 */
+            object-fit: cover;
+            /* 動画が枠にぴったり収まるように */
+            object-position: center center;
+            /* 動画の中心を表示 */
             opacity: 0.9;
             transition: transform 0.3s ease;
         }
@@ -63,8 +67,14 @@
         .zoom-hover:hover {
             transform: scale(1.1);
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
+
 <body>
     <nav id="blog-eyecatch-inner" class="swiper">
         <ul class="swiper-wrapper">
@@ -124,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>
