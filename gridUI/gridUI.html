@@ -191,7 +191,7 @@
 
 		.cell video {
 			position: absolute;
-			top: 0;
+			top:100px;
 			left: 0;
 			transform-origin: top;
 			object-fit: cover;
@@ -305,7 +305,19 @@
 
 		@media screen and (min-width:320px) {
 			.cell video {
-				top: -132px;
+				top: 33px;
+
+			}
+			.cell{
+				border-radius: 20px;
+			}
+		}
+		@media screen and (min-width:523px) {
+			.cell video {
+				top: -100px;
+			}
+			.cell{
+				border-radius: 40px;
 			}
 		}
 	</style>
