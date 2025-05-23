@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <style>
-        /* メインビジュアルの　スライダー------- */
+        /* メインビジュアルのスライダー */
         #blog-eyecatch-inner {
             position: relative;
         }
@@ -18,7 +18,7 @@
             height: auto;
             aspect-ratio: 16/9;
         }
-        /* ← このCSSを追加 */
+
         ul.swiper-wrapper {
             margin: 0;
             padding: 0;
@@ -28,99 +28,16 @@
         /* 動画スタイル */
         .swiper-slide video {
             width: 100%;
-            height: 540px;
-            object-fit: cover;
+            height: 540px; /* 必要に応じて変更 */
+            object-fit: cover; /* 動画が枠にぴったり収まるように */
+            object-position: center center; /* 動画の中心を表示 */
             opacity: 0.9;
             transition: transform 0.3s ease;
-        }
-
-        /* その他のスタイル（アニメーションやホバーなど） */
-        .camera-pc {
-            object-position: left 100%;
-        }
-
-        .cameraimg {
-            object-position: 50% 75%;
-        }
-
-        .pc-img {
-            object-position: center center;
         }
 
         .swiper-pagination {
             position: absolute;
             bottom: 10px;
-        }
-
-        /* スライダーアニメーション */
-        .swiper-slide:hover .camera-pc,
-        .swiper-slide:hover .cameraimg,
-        .swiper-slide:hover .pc-img {
-            opacity: 1;
-            transition: opacity 0.5s ease 0s;
-        }
-
-        .anim-box.kiran {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: opacity 0.5s ease;
-        }
-
-        .anim-box.kiran::before {
-            background-color: #fff;
-            content: "";
-            display: block;
-            position: absolute;
-            top: -100px;
-            left: 0;
-            width: 30px;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .anim-box.kiran:hover::before {
-            animation: kiran 0.5s linear;
-        }
-
-        .swiper-slide:hover .anim-box.kiran {
-            opacity: 1;
-            transition: opacity 1s ease;
-        }
-
-        .swiper-slide:hover .anim-box.kiran::before {
-            animation: kiran 1s linear forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes kiran {
-            0% {
-                transform: scale(2) rotate(45deg);
-                opacity: 0;
-            }
-
-            20% {
-                transform: scale(20) rotate(45deg);
-                opacity: 0.6;
-            }
-
-            40% {
-                transform: scale(30) rotate(45deg);
-                opacity: 0.4;
-            }
-
-            80% {
-                transform: scale(45) rotate(45deg);
-                opacity: 0.2;
-            }
-
-            100% {
-                transform: scale(50) rotate(45deg);
-                opacity: 0;
-            }
         }
 
         .swiper-button-prev,
