@@ -1,0 +1,9 @@
+ .text_background {
+      background-color: #e7e7e7;
+      color: #080000;
+      width: 95%;
+  }
+
+  .content_padding {
+      padding: 16px;
+  }
