@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>完全版・無限横スクロール</title>
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* 🔧 スクロール防止 */
+      overflow: hidden;
+      /* 🔧 スクロール防止 */
       font-family: Arial, sans-serif;
     }
 
@@ -126,13 +128,23 @@
     }
 
     @keyframes move-left {
-      0% { transform: translateX(-10px); }
-      100% { transform: translateX(10px); }
+      0% {
+        transform: translateX(-10px);
+      }
+
+      100% {
+        transform: translateX(10px);
+      }
     }
 
     @keyframes move-right {
-      0% { transform: translateX(10px); }
-      100% { transform: translateX(-10px); }
+      0% {
+        transform: translateX(10px);
+      }
+
+      100% {
+        transform: translateX(-10px);
+      }
     }
   </style>
 </head>
@@ -148,19 +160,29 @@
     <div class="scroll-container">
       <div class="scroll-content">
         <div class="dummy-card light">
-          
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/works?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
+        </div>
+        <div class="dummy-card dark">
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/camera?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
+        </div>
+        <div class="dummy-card light">
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/web?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
         </div>
         <div class="card dark" data-id="tab1">
-          <iframe src="https://mgusa-blog.blogspot.com/search/label/works?view=flipcard" frameborder="0" height="100%" width="100%"></iframe>
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/works?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
         </div>
         <div class="card light" data-id="tab2">
-          <iframe src="https://mgusa-blog.blogspot.com/search/label/camera?view=flipcard" frameborder="0" height="100%" width="100%"></iframe>
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/camera?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
         </div>
         <div class="card dark" data-id="tab3">
-          <iframe src="https://mgusa-blog.blogspot.com/search/label/web?view=flipcard" frameborder="0" height="100%" width="100%"></iframe>
+          <iframe src="https://mgusa-blog.blogspot.com/search/label/web?view=flipcard" frameborder="0" height="100%"
+            width="100%"></iframe>
         </div>
-         <div class="dummy-card light">
-          <iframe src="https://mgusa-blog.blogspot.com/search/label/works?view=flipcard" frameborder="0" height="100%" width="100%"></iframe>
       </div>
     </div>
 
