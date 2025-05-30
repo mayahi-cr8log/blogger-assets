@@ -173,6 +173,48 @@
   </div>
 
   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const labelMap = {
+      tab1: "Works",
+      tab2: "Camera",
+      tab3: "Web",
+    };
+
+    // ラベルごとに画像とリンクを取得しカードに反映
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      const tabId = card.dataset.id;
+      const label = labelMap[tabId];
+      const url = `https://mgusa-blog.blogspot.com/feeds/posts/default/-/${label}?alt=json`;
+
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          const entries = data.feed.entry;
+          if (!entries || entries.length === 0) return;
+
+          const entry = entries[0];
+          const link = entry.link.find((l) => l.rel === "alternate").href;
+          const title = entry.title.$t;
+          const content = entry.content.$t;
+
+          const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+          const imageUrl = imgMatch ? imgMatch[1] : "";
+
+          card.innerHTML = `
+            <a href="${link}" target="_blank" style="text-decoration:none;color:inherit;">
+              <div style="background-image:url('${imageUrl}'); background-size:cover; background-position:center; height:150px; border-radius:12px; display:flex; align-items:end; padding:10px; color:white; font-weight:bold; text-shadow:0 0 5px #000;">
+                ${title}
+              </div>
+            </a>
+          `;
+        })
+        .catch((err) => {
+          console.error("データ取得エラー:", err);
+        });
+    });
+
+    // 無限横スクロール + タブ操作 + 矢印操作ロジック
     document.querySelectorAll('.contents_width').forEach(section => {
       const container = section.querySelector('.scroll-container');
       const content = section.querySelector('.scroll-content');
@@ -278,53 +320,9 @@
         requestAnimationFrame(scrollStep);
       }, 100);
     });
+  });
+</script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const labelMap = {
-        tab1: "Works",
-        tab2: "Camera",
-        tab3: "Web",
-      };
-
-      const cards = document.querySelectorAll(".card");
-
-      cards.forEach((card) => {
-        const tabId = card.dataset.id;
-        const label = labelMap[tabId];
-        const url = `https://mgusa-blog.blogspot.com/feeds/posts/default/-/${label}?alt=json`;
-
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            const entries = data.feed.entry;
-            if (!entries || entries.length === 0) return;
-
-            const entry = entries[0]; // 最新記事1件だけ取得
-            const link = entry.link.find((l) => l.rel === "alternate").href;
-            const title = entry.title.$t;
-            const content = entry.content.$t;
-
-            // 記事内の最初の画像URLを取得
-            const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-            const imageUrl = imgMatch ? imgMatch[1] : "";
-
-            // カードのHTMLを上書き
-            card.innerHTML = `
-          <a href="${link}" target="_blank" style="text-decoration:none;color:inherit;">
-            <div style="background-image:url('${imageUrl}'); background-size:cover; background-position:center; height:150px; border-radius:12px; display:flex; align-items:end; padding:10px; color:white; font-weight:bold; text-shadow:0 0 5px #000;">
-              ${title}
-            </div>
-          </a>
-        `;
-          })
-          .catch((err) => {
-            console.error("データ取得エラー:", err);
-          });
-      });
-    });
-
-
-  </script>
 </body>
 
 </html>
