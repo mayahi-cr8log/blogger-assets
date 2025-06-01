@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mugsa.Pixelog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ドライフラワー作家によるカメラ・Web制作・ポートフォリオサイト。技術 × 想い × 成長 をテーマに、作品と表現を発信しています。">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <style>
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .background-wrapper video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0;
+            font-size: 100%;
+            color: #707070;
+            font-family: sans-serif;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: #707070;
+            text-decoration: none;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .contents_width {
+
+            padding: 0 35px;
+        }
+
+
+
+        #headline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 35px;
+            padding-right: 35px;
+            background-color: #fff;
+            height: 100px;
+        }
+
+        #headline .logo {
+            max-width: 190px;
+            line-height: 0;
+        }
+
+        #headline .navi {
+            display: flex;
+            align-items: center;
+        }
+
+        #headline .navi li {
+            font-size: 14px;
+            margin-left: 40px;
+        }
+
+        .mainvisual {
+            aspect-ratio: 16/9;
+            margin: 40px 0 80px;
+        }
+
+        .introducion {
+            margin-bottom: 100px;
+            text-align: center;
+            background-color: #ffffffb5;
+            color: #333;
+            padding: 70px;
+        }
+
+        .introducion .catchphrase {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 24px;
+        }
+
+        .introducion .text {
+            font-size: 14px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-weight: normal;
+            margin-bottom: 40px;
+        }
+
+        .section-title .en {
+            font-size: 40px;
+            display: block;
+        }
+
+        .section-title .ja {
+            font-size: 14px;
+            display: block;
+            padding-left: 30px;
+        }
+
+        #latest_article {
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+            margin-bottom: 120px;
+            gap: 30px;
+            color: #333;
+            width: 100%;
+        }
+
+        #latest_article .iframe-wrapper {
+            width: 50%;
+        }
+
+        #latest_article .detail {
+            width: 50%;
+            padding-right: 30px;
+            background-color: #ffffffb5;
+            padding: 30px;
+        }
+
+        #latest_article .detail p {
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        #works {
+            margin-bottom: 100px;
+            background-color: #ffffffb5;
+            color: #333;
+            padding-top: 30px;
+        }
+
+        #works .section-title {
+            padding-left: 30px;
+        }
+
+        .works-list {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #latest_article .iframe-wrapper {
+            position: relative;
+            aspect-ratio: 10/ 9;
+            width: 50%;
+            overflow: hidden;
+            background-color: #ffffffb5;
+        }
+
+        .works-list .iframe-wrapper {
+            position: relative;
+            aspect-ratio: 8 / 12;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .iframe-scaler {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 125%;
+            height: 125%;
+            transform: scale(0.8);
+            transform-origin: top left;
+        }
+
+        .iframe-scaler iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        #footerline {
+            font-size: 12px;
+            padding: 20px 0;
+            text-align: center;
+            background-color: #fff;
+            height: 100px;
+        }
+
+        .works-list .iframe-wrapper {
+            position: relative;
+            aspect-ratio: 15 / 21;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        @media (max-width: 999px) {
+            #headline {
+                padding: 25px 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #headline .navi li {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+
+            #headline {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            #header .logo {
+                max-width: 120px;
+            }
+
+            .mainvisual {
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+
+            .introducion {
+                margin-bottom: 60px;
+                padding: 15px 15px;
+            }
+
+            .section-title .en {
+                font-size: 32px;
+            }
+
+            #works .section-title {
+                padding-left: 10px;
+            }
+
+            #latest_article {
+                flex-direction: column-reverse;
+                margin-bottom: 60px;
+            }
+
+            #latest_article .iframe-wrapper,
+            #latest_article .detail {
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 10px;
+            }
+
+            .works-list {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .works-list li {
+                width: 100%;
+                margin: 0 0 20px;
+            }
+
+            .contents_width {
+
+                padding: 0px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-wrapper">
+        <video src="https://mgusa-web.github.io/blogger-assets/video/camera_bg.mp4" autoplay muted loop
+            playsinline></video>
+    </div>
+
+
+    <div id="headline" class="contents_width">
+        <h1 class="logo">
+            <a href="index.html">
+                Mugsa.Pixelog
+            </a>
+        </h1>
+        <nav>
+            <ul class="navi">
+                <li><a href="#profile">profile</a></li>
+                <li><a href="#works">Works</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- レイアウト変更ボタン-------------------------------------------------------------------------->
+    <div class="contents_width" style="text-align:right; margin: 1.5em auto; max-width: 100%;">
+        <button onclick="(function(){
+    var menu = document.getElementById('layoutDropdown');
+    if(menu.style.display === 'block'){ menu.style.display = 'none'; }
+    else { menu.style.display = 'block'; }
+  })()" style="background-color:#333333; color:#fff; padding:10px 16px; font-size:15px; border:none; border-radius:5px; cursor:pointer;">
+            🔳 レイアウトを変更する
+        </button>
+
+        <div id="layoutDropdown"
+            style="display:none; margin-top:10px; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.2); text-align:left; padding:10px;">
+
+            <div style="margin-bottom:15px;">
+                <a href="https://mgusa-blog.blogspot.com/?view=flipcard" target="_blank"
+                    style="font-weight:bold; color:#333; text-decoration:none; font-size:15px;">フリップカード</a>
+                <div style="color:#666; font-size:13px; line-height:1.4;">カードがめくれるような演出で、視覚的に楽しいレイアウトです。</div>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <a href="https://mgusa-blog.blogspot.com/?view=classic" target="_blank"
+                    style="font-weight:bold; color:#333; text-decoration:none; font-size:15px;">クラシック</a>
+                <div style="color:#666; font-size:13px; line-height:1.4;">一般的なブログスタイル。時系列に記事が並び、読みやすい形式です。</div>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <a href="https://mgusa-blog.blogspot.com/?view=magazine" target="_blank"
+                    style="font-weight:bold; color:#333; text-decoration:none; font-size:15px;">雑誌</a>
+                <div style="color:#666; font-size:13px; line-height:1.4;">雑誌のようにグリッド状に記事を配置。多くの記事を一覧表示できます。</div>
+            </div>
+
+            <div style="margin-bottom:15px;">
+                <a href="https://mgusa-blog.blogspot.com/?view=mosaic" target="_blank"
+                    style="font-weight:bold; color:#333; text-decoration:none; font-size:15px;">モザイク</a>
+                <div style="color:#666; font-size:13px; line-height:1.4;">記事をモザイク状に自動配置。画像が多いブログに向いています。</div>
+            </div>
+
+            <div style="margin-bottom:5px;">
+                <a href="https://mgusa-blog.blogspot.com/?view=sidebar" target="_blank"
+                    style="font-weight:bold; color:#333; text-decoration:none; font-size:15px;">サイドバー</a>
+                <div style="color:#666; font-size:13px; line-height:1.4;">画面左側にカテゴリやアーカイブが表示され、記事を選びやすい構成です。</div>
+            </div>
+
+        </div>
+    </div>
+    <!-- レイアウト変更ボタン-------------------------------------------------------------------------->
+    <div class="wrapper">
+        <div class="mainvisual">
+            <div class="iframe-wrapper">
+                <div class="iframe-scaler">
+                    <iframe title="Main Visual Slider"
+                        src="https://mgusa-web.github.io/blogger-assets/main_visual_slider/main_visual_slider.html"
+                        loading="lazy" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <main class="contents_width">
+            <div class="introducion">
+                <p class="catchphrase">このサイトについて</p>
+                <p class="text">
+                    このブログでは、カメラや写真に関する情報、そしてWeb制作に関する知識や技術を発信しています。<br>
+                    また、私自身のポートフォリオとして、これまでに制作した作品や成長の記録もご覧いただけます。<br>
+                    「技術 × 想い × 成長」をテーマに、あたたかさを感じられる表現を大切にしています。
+                </p>
+            </div>
+
+            <section id="latest_article">
+                <div class="iframe-wrapper">
+                    <div class="iframe-scaler">
+                        <iframe title="Profile Animation"
+                            src="https://mgusa-web.github.io/blogger-assets/newsectionscroll/newsectionscroll.html"
+                            loading="lazy" allowfullscreen class="custom-iframe"></iframe>
+                    </div>
+                </div>
+                <div class="detail" id="profile">
+                    <h2 class="section-title">
+                        <span class="en">Learning and Trying</span>
+                        <span class="ja">（学びと挑戦）</span>
+                    </h2>
+                    <p>
+                        カメラ・Web・ものづくり。<br>
+                        ジャンルは違っても、どれも自分の記録です。<br>
+                        カメラは、写真として素材になるだけでなく、構図や色のバランスなど、デザインにも活かせることに気づきました。<br>
+                        Web技術は、最初こそ難しくて「自分には無理かも」と感じたこともありましたが、ほんの少しずつ前に進むことで、新しい技術を身につけられました。<br>
+                        そうして積み重ねたことを、形にしながらまとめたのがこのスペースです。<br>
+                        自分にとっては作品のような場所。<br>
+                        気ままにスクロールしながら、どうぞご観覧ください。
+                    </p>
+                </div>
+            </section>
+
+            <section id="works">
+                <h2 class="section-title">
+                    <span class="en">Works</span>
+                    <span class="ja">作品一覧</span>
+                </h2>
+                <ul class="works-list">
+                    <li class="iframe-wrapper">
+                        <div class="iframe-scaler">
+                            <iframe title="Grid UI Work"
+                                src="https://mgusa-web.github.io/blogger-assets/gridUI/gridUI.html" loading="lazy"
+                                allowfullscreen class="custom-iframe"></iframe>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <div id="footerline" class="contents_width">
+        <p class="copyright">© Dry Flower Life.</p>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
