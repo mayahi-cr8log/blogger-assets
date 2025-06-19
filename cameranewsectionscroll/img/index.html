@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>キランアニメテスト</title>
+  <style>
+    .kiran-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+    }
+
+    .kiran-base {
+      width: 100%;
+      height: 100%;
+      opacity: 0.3; /* 常に薄い画像 */
+    }
+
+    .kiran-anim {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      animation: shine 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      0% { opacity: 0; transform: scale(1); }
+      30% { opacity: 1; transform: scale(1.2); }
+      60% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="kiran-wrapper">
+    <img src="camera_pc.png" alt="薄くしたキラン" class="kiran-base" />
+    <img src="camera_pc.png" alt="アニメキラン" class="kiran-anim" />
+  </div>
+
+</body>
+</html>

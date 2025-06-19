@@ -65,12 +65,25 @@
       flex-wrap: nowrap;
     }
 
-    .light {
-      background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+    .iphone {
+      background-image: url(img/iPhone撮影テク.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center bottom;
     }
 
-    .dark {
-      background: linear-gradient(135deg, #26c6da, #00acc1);
+    .kouzu {
+      background-image: url(img/構図.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center -79px;
+    }
+
+    .basic {
+      background-image: url(img/basic.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
     }
 
     .card,
@@ -80,7 +93,7 @@
       height: auto;
       aspect-ratio: 16/9;
       margin: 0 20px;
-      background: linear-gradient(135deg, #74ebd5, #acb6e5);
+
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       display: flex;
@@ -92,6 +105,7 @@
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
+
 
     .card:hover,
     .dummy-card:hover {
@@ -159,23 +173,23 @@
 
     <div class="scroll-container">
       <div class="scroll-content">
-        <div class="dummy-card light">
-          
+        <div class="dummy-card iphone">
+
         </div>
-        <div class="dummy-card dark">
-         
+        <div class="dummy-card kouzu">
+
         </div>
-        <div class="dummy-card light">
-          
+        <div class="dummy-card basic">
+
         </div>
-        <div class="card dark" data-id="tab1">
-          
+        <div class="card iphone" data-id="tab1">
+
         </div>
-        <div class="card light" data-id="tab2">
-          
+        <div class="card kouzu" data-id="tab2">
+
         </div>
-        <div class="card dark" data-id="tab3">
-          
+        <div class="card basic" data-id="tab3">
+
         </div>
       </div>
     </div>
