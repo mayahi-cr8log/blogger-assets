@@ -141,6 +141,18 @@
       animation: move-right 1.5s infinite alternate ease-in-out;
     }
 
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      text-indent: -9999px;
+      /* テキストを非表示にする場合 */
+      z-index: 1;
+    }
+
     @keyframes move-left {
       0% {
         transform: translateX(-10px);
